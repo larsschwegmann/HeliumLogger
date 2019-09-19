@@ -17,6 +17,12 @@
 import LoggerAPI
 import Foundation
 
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin.C
+#endif
+
 /// The set of colors used when logging with colorized lines.
 public enum TerminalColor: String {
     /// Log text in white.
@@ -257,6 +263,7 @@ public class HeliumLogger {
 
     func doPrint(_ message: String) {
         print(message)
+        fflush(__stdoutp)
     }
 }
 
