@@ -263,7 +263,7 @@ public class HeliumLogger {
 
     func doPrint(_ message: String) {
         print(message)
-        fflush(__stdoutp)
+        fflush(stdout)
     }
 }
 
